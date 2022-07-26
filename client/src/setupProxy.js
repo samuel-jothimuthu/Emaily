@@ -1,0 +1,10 @@
+//any time we make a change to this file we need to restart the server
+const { createProxyMiddleware } = require('http-proxy-middleware');
+module.exports = function (app) {
+  app.use(
+    ['/api', '/auth/google'],
+    createProxyMiddleware({
+      target: 'http://localhost:5000',
+    })
+  );
+};
